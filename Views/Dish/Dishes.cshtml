@@ -1,0 +1,37 @@
+@model List<Dish>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chefs 'N Dishes</title>
+</head>
+<body>
+    <h1><a asp-controller = "Chef" asp-action = "Index">Chefs</a> | Dishes</h1>
+    <a asp-controller = "Dish" asp-action = "NewDish">Add a Dish</a>
+    <h3>Yum, take a look at our tasty dishes!</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Chef</td>
+                <td>Tastiness</td>
+                <td>Calories</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Dish dish in Model)
+            {
+            <tr>
+                <td>@dish.Name</td>
+                <td>@dish.Creator.FirstName @dish.Creator.LastName</td>
+                <td>@dish.Tastiness</td>
+                <td>@dish.Calories</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
